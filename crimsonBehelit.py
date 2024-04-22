@@ -4,13 +4,22 @@ import ida_lines
 import ida_funcs
 import ida_segment
 import ida_idaapi
-
+from g4f.client import Client
 #according to hexrays documentation, ea is "any address belonging to the (a) function" (hex-rays, 2024)
 #this is why ea is used
 
+
+def query(prompt):
+        client = Client()
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}]
+            )
+        return response.choices[0].message.content
+
 #class made to deal with printing the disassembly
 class DisassemblyPrinter(ida_kernwin.action_handler_t):
-
+    
     #initializing constructor
     def __init__(self):
         ida_kernwin.action_handler_t.__init__(self)
@@ -57,20 +66,27 @@ class DisassemblyPrinter(ida_kernwin.action_handler_t):
                 ea = ida_bytes.next_head(ea, end_ea + 1)
             
             #after processing the disassembly, print the cleaned up lines
+            f = open("prompt.txt", "w")
             if disasm_text:
                 print("Highlighted Disassembly:")
                 for line in disasm_text:
-                    print(line)
+                    f.write(line)
+                f.close()
+                with open("prompt.txt", 'r') as file:
+                    lines = file.readlines()
+                    prompt = ', '.join(lines)
+                result = query(prompt)
+                print(result)
+            # functionality ne
             else:
                 #error case
-                print("No disassembly lines were generated for the selection.")
+                print("No disassembly lines were generated for the selection.")    
             return 1
         else:
             #when nothing is selected yfm?
             print("No code selected.")
             return 0
 
-    #functionality needed for IDA Pro action handler interface
     def update(self, ctx):
         return ida_kernwin.AST_ENABLE_ALWAYS
 
