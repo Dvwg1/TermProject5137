@@ -14,15 +14,12 @@ def query(prompt):
         client = Client()
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "system", "content": "You are an expert in Assembly code and how it works as well as obfuscation techniques in assembly. Please analyze and explain how any assembly given to you works."},
-                      {"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}]
             )
         while detect(response.choices[0].message.content) != 'en':
             response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are an expert in Assembly code and how it works as well as obfuscation techniques in assembly. Please analyze and explain how any assembly given to you works."},
-                {"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}]
             )
         return response.choices[0].message.content
 
@@ -108,7 +105,7 @@ class DisassemblyPrinter(ida_kernwin.action_handler_t):
 #   6.Icon ID
 action_desc = ida_kernwin.action_desc_t(
     'my:printdisassembly',
-    'Print Disassembly',
+    'Crimson',
     DisassemblyPrinter(),
     None,
     'Print selected disassembly',
@@ -127,5 +124,5 @@ ida_kernwin.attach_action_to_menu(
     ida_kernwin.SETMENU_APP)
 
 #tells the user how to see the disassembly they highlighted
-print("Disassembly printer script loaded. Use Edit > Plugins > Print Disassembly to print highlighted disassembly.")
+print("Disassembly printer script loaded. Use Edit > Plugins > Crimson to ask for help.")
 
