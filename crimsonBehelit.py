@@ -17,14 +17,16 @@ def query(prompt):
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
             )
+        responsestring = response.choices[0].message.content
         test_char = response.choices[0].message.content[0]
-        test_2 = response.choices[0].message.content[0]
+        test_2 = responsestring[0]
         while test_char.isascii() != True and test_2.isascii() != True:
             response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
             )
-                test_2 = response.choices[0].message.content[0]
+                responsestring = response.choices[0].message.content
+                test_2 = responsestring[0]
             test_char = response.choices[0].message.content[0]
         return response.choices[0].message.content
 
