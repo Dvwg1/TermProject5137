@@ -5,7 +5,6 @@ import ida_funcs
 import ida_segment
 import ida_idaapi
 from g4f.client import Client
-from langdetect import detect
 import string
 #according to hexrays documentation, ea is "any address belonging to the (a) function" (hex-rays, 2024)
 #this is why ea is used
