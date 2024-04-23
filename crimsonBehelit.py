@@ -25,8 +25,8 @@ def query(prompt):
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
             )
-                responsestring = response.choices[0].message.content
-                test_2 = responsestring[0]
+            responsestring = response.choices[0].message.content
+            test_2 = responsestring[0]
             test_char = response.choices[0].message.content[0]
         return response.choices[0].message.content
 
