@@ -6,6 +6,7 @@ import ida_segment
 import ida_idaapi
 from g4f.client import Client
 from langdetect import detect
+import string
 #according to hexrays documentation, ea is "any address belonging to the (a) function" (hex-rays, 2024)
 #this is why ea is used
 
@@ -16,11 +17,13 @@ def query(prompt):
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
             )
-        while detect(response.choices[0].message.content) != 'en':
+        test_char = response.choices[0].message.content[0]
+        while test_char.isascii() != True:
             response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
             )
+            test_char = response.choices[0].message.content[0]
         return response.choices[0].message.content
 
 #class made to deal with printing the disassembly
