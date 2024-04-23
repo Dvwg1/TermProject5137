@@ -13,7 +13,8 @@ def query(prompt):
         client = Client()
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}]
+            messages=[{"role": "system", "content": "You are an expert in Assembly code and how it works as well as obfuscation techniques in assembly. Please analyze and explain how any assembly given to you works."},
+                      {"role": "user", "content": prompt}]
             )
         return response.choices[0].message.content
 
