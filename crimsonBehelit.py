@@ -16,10 +16,10 @@ def query(prompt):
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
             )
-        responsestring = response.choices[0].message.content
+        responsestring = response.choices[0].message.content #This allows the creation of test variables
         test_char = response.choices[0].message.content[0]
         test_2 = responsestring[0]
-        sorry_test = responsestring[0:9]
+        sorry_test = responsestring[0:9] #This allows us to check if the program refuses to review the input and retry the sent data
         while test_char.isascii() != True and test_2.isascii() != True and sorry_test != "I'm sorry":
             response = client.chat.completions.create(
             model="gpt-3.5-turbo",
