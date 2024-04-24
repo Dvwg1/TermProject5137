@@ -17,6 +17,9 @@ During initial devlopment and testing, one of our machines ran into an issue wit
 plugins, and would not run the script. This required a fresh re-install of IDA Pro. During 
 testing, if IDA python plugin errors occur, it may need to be freshly re-installed.
 
+Occasionally when the script runs your will get a message that says "IDA is not responding". 
+If you click wait, the script will load the response from ChatGPT.
+
 Additionally, gpt4f module could, due to its nature, at any given point
 cease to function due to its legally ambiguous nature. We have no control over this, and we
 believe that the module should still be functional for testing. As of submission, this Python
