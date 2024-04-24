@@ -20,7 +20,7 @@ testing, if IDA python plugin errors occur, it may need to be freshly re-install
 Occasionally when the script runs you will get a message that says "IDA is not responding". 
 If you click wait, the script will load the response from ChatGPT.
 
-Rarely ChatGPT will respond will "Sorry, I can't assist with that". If you resend the 
+Rarely ChatGPT will respond with "Sorry, I can't assist with that". If you resend the 
 highlighted code it should process correctly. 
 
 Additionally, gpt4f module could, due to its nature, at any given point
