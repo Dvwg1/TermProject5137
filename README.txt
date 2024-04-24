@@ -17,10 +17,13 @@ During initial devlopment and testing, one of our machines ran into an issue wit
 plugins, and would not run the script. This required a fresh re-install of IDA Pro. During 
 testing, if IDA python plugin errors occur, it may need to be freshly re-installed.
 
-Another thing to note is that the gpt4f module could, due to its nature, at any given point
-cease to function, due to its legally ambiguous nature. We have no control over this, and we
+Additionally, gpt4f module could, due to its nature, at any given point
+cease to function due to its legally ambiguous nature. We have no control over this, and we
 believe that the module should still be functional for testing. As of submission, this Python
 module is still functioning and working as expected/intended.
+
+Finally, in order to handle multiple lines of highlighted code, this program requires the ability 
+to open and write to a file. This stores the query and is then opened and read in order to send to ChatGPT.
 
 Instructions:
 1. Load an executable to be analysed statically into IDA Pro.
