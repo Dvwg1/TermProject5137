@@ -17,7 +17,7 @@ During initial devlopment and testing, one of our machines ran into an issue wit
 plugins, and would not run the script. This required a fresh re-install of IDA Pro. During 
 testing, if IDA python plugin errors occur, it may need to be freshly re-installed.
 
-Occasionally when the script runs your will get a message that says "IDA is not responding". 
+Occasionally when the script runs you will get a message that says "IDA is not responding". 
 If you click wait, the script will load the response from ChatGPT.
 
 Rarely ChatGPT will respond will "Sorry, I can't assist with that". If you resend the 
